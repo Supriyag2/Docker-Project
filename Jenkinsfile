@@ -9,8 +9,8 @@ pipeline {
         }
         stage('docker-build') {
             steps {
-               sh 'cd Docker-Project && docker build -t Docker-Project:v1 .'
-            sh docker tag Docker-Project:v1 supriyagurram/docker_project1:v1
+               sh 'cd Docker-Project && docker build -t docker-Project:v1 .'
+            sh docker tag docker-Project:v1 supriyagurram/docker_project1:v1
             }
         }
         stage('docker-push') {
