@@ -1,33 +1,32 @@
-pipeline {
+  pipeline {
     agent any
 
     stages {
         stage('Build') {
             steps {
-               sh 'cd Docker-Project && mvn deploy'
+                sh 'cd Docker-Project && mvn deploy'
             }
         }
         stage('docker-build') {
             steps {
-               sh 'cd Docker-Project && docker build -t docker-Project:v1 .'
+                sh 'cd Docker-Project && docker build -t docker-Project:v1 .'
             }
         }
         stage('docker-changename'){
             steps {
-            sh docker tag docker-Project supriyagurram/docker_project1:v1
+                sh 'docker tag docker-Project supriyagurram/docker_project1:v1'
             }
         }
         stage('docker-push') {
             steps {
-              sh docker push supriyagurram/docker_project1:v1
+                sh 'docker push supriyagurram/docker_project1:v1'
             }
-    }
+        }
         stage('docker-run'){
             steps {
-                sh docker run -d -p 8080:8080 -- name dockerProject supriyagurram/docker_project1:v1
-}
-}
+                sh 'docker run -d -p 8080:8080 --name dockerProject supriyagurram/docker_project1:v1'
+            }
+        }
     }
 }
-    
 
