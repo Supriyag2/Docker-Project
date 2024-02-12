@@ -10,8 +10,14 @@ pipeline {
         stage('docker-build') {
             steps {
                sh 'cd Docker-Project && docker build -t docker-Project:v1 .'
+            }
+        }
+        stage('docker-changename'){
+            steps{
+            
             sh docker tag docker-Project:v1 supriyagurram/docker_project1:v1
             }
+        
         }
         stage('docker-push') {
             steps {
