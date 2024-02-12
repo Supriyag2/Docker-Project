@@ -13,11 +13,9 @@ pipeline {
             }
         }
         stage('docker-changename'){
-            steps{
-            
+            steps {
             sh docker tag docker-Project:v1 supriyagurram/docker_project1:v1
             }
-        
         }
         stage('docker-push') {
             steps {
@@ -31,3 +29,5 @@ pipeline {
 }
     }
 }
+    
+
