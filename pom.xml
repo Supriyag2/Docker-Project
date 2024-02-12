@@ -354,12 +354,12 @@
     <repository>
         <id>Docker_Project_Release</id>
         <name>Docker_Project_Release</name>
-        <url>http://52.87.245.196:8081/repository/Docker_Project_Release/</url>
+        <url>http://44.202.217.233:8081/repository/Docker_Project_Release/</url>
     </repository>
     <snapshotRepository>
         <id>Docker_project_SnapShot</id>
         <name>Docker_project_SnapShot</name>
-        <url>http://52.87.245.196:8081/repository/Docker_project_SnapShot/</url>
+        <url>http://44.202.217.233:8081/repository/Docker_project_SnapShot/</url>
     </snapshotRepository>
 </distributionManagement>
       
