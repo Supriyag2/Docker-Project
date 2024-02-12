@@ -12,7 +12,7 @@
                 sh 'cd Docker-Project && docker build -t docker-Project:v1 .'
             }
         }
-        stage('docker-changename'){
+        stage('docker-image-changename'){
             steps {
                 sh 'docker tag docker-Project:v1 supriyagurram/docker_project1:v1'
             }
