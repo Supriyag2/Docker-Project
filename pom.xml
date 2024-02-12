@@ -350,19 +350,20 @@
           </plugins>
         </pluginManagement>
       </build>
-    </profile>
-  </profiles>
-  </project>
-<distributionManagement>
-    <repository>
+      <distributionManagement>
+       <repository>
         <id>Docker_Project_Release</id>
         <name>Docker_Project_Release</name>
         <url>http://44.202.217.233:8081/repository/Docker_Project_Release/</url>
     </repository>
-    <snapshotRepository>
+     <snapshotRepository>
         <id>Docker_project_SnapShot</id>
         <name>Docker_project_SnapShot</name>
         <url>http://44.202.217.233:8081/repository/Docker_project_SnapShot/</url>
-    </snapshotRepository>
-</distributionManagement>
+     </snapshotRepository>
+   </distributionManagement>
+    </profile>
+  </profiles>
+  </project>
+
       
