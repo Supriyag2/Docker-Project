@@ -4,19 +4,24 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               sh 'cd coit-backend1 && mvn install'
+               sh 'cd Docker-Project && mvn deploy'
             }
         }
         stage('docker-build') {
             steps {
-               sh 'cd coit-backend1 && docker build -t coit-backend1-12344321 .'
+               sh 'cd Docker-Project && docker build -t Docker-Project:v1 .'
+            sh docker tag Docker-Project:v1 supriyagurram/docker_project1:v1
             }
         }
         stage('docker-push') {
             steps {
-               sh 'echo "push"'
-                // docker push amol1996/coit-backend1-12344321
+              sh docker push supriyagurram/docker_project1:v1
             }
     }
+        stage('docker-run'){
+            steps {
+                sh docker run -d -p 8080:8080 --name dockerProject supriyagurram/docker_project1:v1
 }
+}
+    }
 }
