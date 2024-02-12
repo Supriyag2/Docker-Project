@@ -4,7 +4,7 @@
     stages {
         stage('Build') {
             steps {
-                sh 'cd Docker-Project && mvn deploy'
+                sh 'mvn deploy'
             }
         }
         stage('docker-build') {
