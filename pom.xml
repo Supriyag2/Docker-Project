@@ -350,7 +350,10 @@
           </plugins>
         </pluginManagement>
       </build>
-     <distributionManagement>
+    </profile>
+  </profiles>
+  </project>
+<distributionManagement>
     <repository>
         <id>Docker_Project_Release</id>
         <name>Docker_Project_Release</name>
@@ -363,8 +366,3 @@
     </snapshotRepository>
 </distributionManagement>
       
-  </profile>
-  </profiles>
-  
-
-</project>
