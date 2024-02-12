@@ -9,7 +9,7 @@
         }
         stage('docker-build') {
             steps {
-                sh 'cd Docker-Project && docker build -t docker-Project:v1 .'
+                sh 'docker build -t docker-Project:v1 .'
             }
         }
         stage('docker-image-changename'){
