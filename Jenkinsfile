@@ -26,7 +26,7 @@ pipeline {
     }
         stage('docker-run'){
             steps {
-                sh docker run -d -p 8080:8080 --name dockerProject supriyagurram/docker_project1:v1
+                sh docker run -d -p 8080:8080 -- name dockerProject supriyagurram/docker_project1:v1
 }
 }
     }
