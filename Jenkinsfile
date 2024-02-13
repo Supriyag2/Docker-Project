@@ -19,7 +19,7 @@
         }
         stage('docker-run'){
             steps {
-                sh 'docker run -d -p 8080:8080 --name supriyagurram/project_1.1'
+                sh 'docker run -d -p 8083:8080 --name supriyagurram/project_1.1'
             }
         }
     }
