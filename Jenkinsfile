@@ -1,27 +1,79 @@
-  pipeline {
+pipeline {
     agent any
-
+    
     stages {
-        stage('Build') {
+        stage('List Directory Contents for verifying') {
+            steps {
+                sh 'ls -l'
+            }
+        }
+        stage('Print Current Working Directory') {
+            steps {
+                sh 'pwd'
+            }
+        }
+        stage('Print Current User') {
+            steps {
+                sh 'whoami'
+            }
+        }
+        stage('Maven Build') {
             steps {
                 sh 'mvn deploy'
             }
         }
-        stage('docker-build') {
+        stage('List Directory Contents After Install') {
             steps {
-                sh 'docker build -t supriyagurram/project_1:1 .'
+                sh 'ls -l'
             }
         }
-        stage('docker-push') {
+        stage('List Contents of "target" Directory') {
             steps {
-                sh 'docker push ssupriyagurram/project_1:1'
+                sh 'ls -l target'
             }
         }
-        stage('docker-run'){
+        stage('Build Docker Image') {
             steps {
-                sh 'docker run -d -p 8083:8080 --name supriyagurram/project_1.1'
+                sh 'docker build -t myimage:${docker_image_tag} .'
             }
         }
-    }
+        stage('Verify Docker Images') {
+            steps {
+                sh 'docker images'
+            }
+        }
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker run -d -p 8083:8080 --name container1 myimage:${docker_image_tag}'
+                // Optional: Add sleep step if needed
+                // sh 'sleep 5'
+            }
+        }
+        stage('Check Running Container') {
+            steps {
+                sh 'docker ps -f name=container1'
+            }
+        }
+        stage('Stop and Remove Container') {
+            steps {
+                sh 'docker stop container1 && docker rm container1'
+            }
+        }
+        stage('Create New Docker Image Tag') {
+            steps {
+                sh 'docker tag myimage:${docker_image_tag} supriyagurram/project_1:${docker_image_tag}'
+            }
+        }
+        stage('Verify New Docker Image Tag') {
+            steps {
+                sh 'docker images'
+            }
+        }
+        stage('Push the image to a registry') {
+            steps {
+                sh 'docker push supriyagurram/project_1:${docker_image_tag} '
+            }
+        }
 }
-
+}  
+             
