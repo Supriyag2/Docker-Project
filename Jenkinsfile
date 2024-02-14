@@ -54,11 +54,6 @@ pipeline {
                 sh 'docker ps -f name=container1'
             }
         }
-        stage('Stop and Remove Container') {
-            steps {
-                sh 'docker stop container1 && docker rm container1'
-            }
-        }
         stage('Create New Docker Image Tag') {
             steps {
                 sh 'docker tag myimage:${docker_image_tag} supriyagurram/project_1:${docker_image_tag}'
