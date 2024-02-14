@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Create New Docker Image Tag') {
             steps {
-                sh 'docker tag myimage:${docker_image_tag} supriyagurram/jenkis_docker_project:v.0.0'
+                sh 'docker tag myimage:v.0.0 supriyagurram/jenkis_docker_project:v.0.0'
             }
         }
         stage('Run Docker Container') {
