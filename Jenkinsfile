@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 8091:8080 supriyagurram/jenkis_docker_project:v.0.1'
+                sh 'docker run -d -p 8092:8080 supriyagurram/jenkis_docker_project:v.0.1'
                 // Optional: Add sleep step if needed
                 // sh 'sleep 5'
             }
