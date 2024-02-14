@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 8088:8080 --name container2 myimage:${docker_image_tag}'
+                sh 'docker run -d -p 8088:8080 --name javaapp myimage:${docker_image_tag}'
                 // Optional: Add sleep step if needed
                 // sh 'sleep 5'
             }
