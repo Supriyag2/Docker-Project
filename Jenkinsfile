@@ -18,21 +18,16 @@ pipeline {
                 sh 'docker images'
             }
         }
-        stage('Run Docker Container') {
-            steps {
-                sh 'docker run -d -p 8088:8080 --name javaapp myimage:${docker_image_tag}'
-                // Optional: Add sleep step if needed
-                // sh 'sleep 5'
-            }
-        }
-       stage('Create New Docker Image Tag') {
+        stage('Create New Docker Image Tag') {
             steps {
                 sh 'docker tag myimage:${docker_image_tag} supriyagurram/project_1:${docker_image_tag}'
             }
         }
-        stage('Verify New Docker Image Tag') {
+        stage('Run Docker Container') {
             steps {
-                sh 'docker images'
+                sh 'docker run -d -p 8089:8080 --name javaapp1 supriyagurram/project_1:${docker_image_tag}'
+                // Optional: Add sleep step if needed
+                // sh 'sleep 5'
             }
         }
         stage('Push the image to a registry') {
