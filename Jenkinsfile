@@ -31,7 +31,7 @@ pipeline {
         }
         stage('run the container'){
             steps {
-                sh 'docker run -d -p 80:8080 supriyagurram/jenkis_docker_project:v.0.3'
+                sh 'docker run -d -p 8088:8080 supriyagurram/jenkis_docker_project:v.0.3'
             }
         }
  }
