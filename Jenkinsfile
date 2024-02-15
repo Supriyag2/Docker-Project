@@ -10,7 +10,7 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t myimage:v.0.5 .'
+                sh 'docker build -t myimage:${docker_image_tag} .'
             }
         }
         stage('Verify Docker Images') {
@@ -20,18 +20,18 @@ pipeline {
         }
         stage('Create New Docker Image Tag') {
             steps {
-                sh 'docker tag myimage:v.0.5 supriyagurram/jenkis_docker_project:v.0.5'
+                sh 'docker tag myimage:${docker_image_tag} supriyagurram/jenkis_docker_project:${docker_image_tag}'
             }
         }
         
         stage('Push the image to a registry') {
             steps {
-                sh 'docker push supriyagurram/jenkis_docker_project:v.0.5'
+                sh 'docker push supriyagurram/jenkis_docker_project:${docker_image_tag}'
             }
         }
         stage('run the container'){
             steps {
-                sh 'docker run -d -p 8088:8080 supriyagurram/jenkis_docker_project:v.0.5'
+                sh 'docker run -d -p 8088:8080 supriyagurram/jenkis_docker_project:${docker_image_tag}'
             }
         }
  }
